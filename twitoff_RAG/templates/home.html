@@ -1,0 +1,36 @@
+<html>
+  <body>
+    <h2>Add Your Desired Users Below</h2>
+    
+    <h3>Add User by Screen Name</h3>
+    <h4>Can be identified in URL as twitter.com/<span style="color:crimson">screen_name</span></h4>
+    <h4>This may take a while</h4>
+    <form method="POST" action="/">
+      <input type="text" name="screen_name">
+      <input type="submit" value="Add">
+    </form>
+​    <h2><a href="/enter_first">Click here to begin predicting!</a></h2>
+    <h2>Users Added to Database</h2>
+    <table>
+      {% for user in users %}
+        <tr>
+          <td>
+            {{user.screen_name}}, last updated on {{user.last_updated}}
+          </td>
+          <td>
+            <form method="POST" action="/" style="display: inline">
+              <input type="hidden" value="{{user.id}}" name="id_u">
+              <input type="submit" value="Update">
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="/" style="display: inline">
+              <input type="hidden" value="{{user.id}}" name="id_d">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    <h4><a href="/about">About this application</a></h4>
+  </body>
+</html>
