@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from .models import Data_Hold, db, User, Tweet
 from .twitter import get_user_info, get_tweets
 from .nlp_modeling import convert_word2vec, make_prediction
@@ -11,7 +11,7 @@ def create_app():
     '''
     This function defines all application processes. Subprocesses are
     imported from individual .py files. All dependencies are outlined
-    in the pipfile.lock. Commends are added where deemed necessary for
+    in the pipfile.lock. Comments are added where deemed necessary for
     clarity.
     '''
 
