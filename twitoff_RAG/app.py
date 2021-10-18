@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from .models import Data_Hold, db, User, Tweet
 from .twitter import get_user_info, get_tweets
 from .nlp_modeling import convert_word2vec, make_prediction
@@ -228,6 +228,13 @@ def create_app():
         if guess == 1:
             guess = name2
 
-        return render_template("results.html", guess=guess,name1=name1, name2=name2, hypo_tweet=hypo_tweet)
+        return render_template("results.html", guess=guess,name1=name1,
+                          name2=name2, hypo_tweet=hypo_tweet)
 
+    @app.route("/favicon.ico")
+    def favicon():
+        return send_from_directory(
+            os.path.join(app.root_path, 'static'),
+            'favicon.ico', mimetype='image/vnd.microsoft.icon'
+            )
     return app
