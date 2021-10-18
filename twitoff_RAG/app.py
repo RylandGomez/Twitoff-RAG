@@ -6,7 +6,7 @@ import os, numpy as np
 from datetime import date
 
 
-def create_app():
+def create_app(arg1, arg2):
 
     '''
     This function defines all application processes. Subprocesses are
